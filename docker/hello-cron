@@ -1,0 +1,4 @@
+PATH="/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/bin/python"
+59 11,23 * * * date >> /docker_api/log.txt
+59 11,23 * * * python /docker_api/improve.py  2>&1 | tee -a /docker_api/log.txt 
+# An empty line is required at the end of this file for a valid cron file
