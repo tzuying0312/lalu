@@ -43,7 +43,7 @@ def callback():
 @handler.add(MessageEvent,message=AudioMessage)
 def handle_aud(event):
     message_content = line_bot_api.get_message_content(event.message.id)
-    ext = (datetime.date.today()+datetime.timedelta(hours=8)).strftime("%Y-%m-%d")
+    ext = (datetime.datetime.now()+datetime.timedelta(hours=8)).strftime("%Y-%m-%d")
     try:
         with tempfile.NamedTemporaryFile(prefix=ext + '-',delete=False) as tf:
             for chunk in message_content.iter_content():
@@ -59,7 +59,7 @@ def handle_aud(event):
         
         gcs = storage.Client()
         bucket = gcs.get_bucket('lalu-aud')
-        folder = (datetime.date.today()+datetime.timedelta(hours=8)).strftime("%Y-%m-%d")
+        folder = (datetime.datetime.now()+datetime.timedelta(hours=8)).strftime("%Y-%m-%d")
         filename = "%s/%s" % (folder, f)
         blob = bucket.blob(filename)
         blob.upload_from_filename(wavpath)
