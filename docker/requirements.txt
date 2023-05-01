@@ -1,5 +1,5 @@
 ffmpeg==1.4
-Flask==1.1.1
+Flask==2.3.2
 gcloud==0.18.3
 google-api-core==1.14.3
 google-auth==1.10.0
